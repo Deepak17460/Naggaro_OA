@@ -1,0 +1,32 @@
+ #include<bits/stdc++.h>
+ using namespace std;
+// Kung fu panda training 
+// Dynamic Programming
+int m=1001;
+
+
+//Time Complexity is O(m) and space Complexity is O(m)
+
+int GetTheMaximumNumberOf(vector<int>&arr,int n){
+      // sum
+      vector<int>sum(m,0);
+      vector<int>dp(m,0);
+      for(int i:arr){
+          sum[i]+=i;
+      }
+      dp[0]=0;
+      dp[1]=sum[1];
+      for(int i=2;i<m;i++){
+          dp[i]=max(dp[i-2]+sum[i],dp[i-1]);
+      }
+      return dp[m-1];
+}
+
+int main(){
+     int n;
+     cin>>n;
+     vector<int>arr(n);
+     for(int &i:arr) cin>>i;
+
+     cout<<GetTheMaximumNumberOf(arr,n)<<endl;
+}
