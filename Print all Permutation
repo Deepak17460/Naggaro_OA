@@ -1,0 +1,30 @@
+ #include<bits/stdc++.h>
+
+
+ using namespace std;
+
+
+void Helper(int ind,string &str,vector<string>&ans){
+         int n=str.size();
+        if(ind>=n){
+            ans.push_back(str);
+            return ;
+        }
+        for(int i=ind;i<n;i++){
+             swap(str[ind],str[i]);
+             Helper(ind+1,str,ans);
+             // Backtracking
+             swap(str[ind],str[i]);
+        }
+}
+
+ int main(){
+     string str;
+     cin>>str;
+    vector<string>ans;
+    //string res="";
+     Helper(0,str,ans);
+     for(string i:ans){
+         cout<<i<<" ";
+     }
+ }
