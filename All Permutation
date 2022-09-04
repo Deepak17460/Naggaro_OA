@@ -1,0 +1,24 @@
+On String
+
+#include<bits/stdc++.h>
+void solve(int ind,string &str,vector<string>&ans){
+    if(p>=str.length()){
+        ans.push_back(str);
+        return ;
+    }
+    for(int i=ind;i<str.length();i++){
+        swap(str[i],str[ind]);
+        solve(ind+1,str,ans);
+        // Backtracking
+        swap(str[i],str[ind]);
+    }
+}
+vector<string> generatePermutations(string &str)
+{
+    vector<string>ans;
+    //sort(ans.begin(),ans.end());
+    solve(0,str,ans);
+    sort(ans.begin(),ans.end());
+    
+    return ans;
+}
